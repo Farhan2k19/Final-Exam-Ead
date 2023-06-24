@@ -36,7 +36,6 @@ app.get('/showRecipes',(req,res)=>{
 }
 );
 
-//add recipe
 app.post('/addRecipe',(req,res)=>{
     const newRecipe=new recipe({
         title:req.body.title,
@@ -48,14 +47,12 @@ app.post('/addRecipe',(req,res)=>{
 }
 );
 
-//update recipe
 app.put('/updateRecipe/:id',(req,res)=>{
     recipe.findByIdAndUpdate(req.params.id,req.body).then(recipe=>{
         res.json(recipe);
     }).catch(err=>res.status(404).json({success:false}));
 }
 );
-//delete a recipe
 app.delete('/deleteRecipe/:id',(req,res)=>{
     recipe.findByIdAndDelete(req.params.id).then(recipe=>res.json(recipe)).catch(err=>res.status(404).json({success:false}));
 }

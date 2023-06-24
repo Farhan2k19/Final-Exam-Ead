@@ -1,0 +1,16 @@
+
+GET http://localhost:5000/showRecipes
+
+###
+
+
+POST http://localhost:5000/addRecipe
+Content-Type: application/json
+
+{
+    "title": "Chicken Parm",
+    "ingredients": "Chicken, Parmesan, Tomato Sauce",
+    "instructions": "Cook the chicken, add the sauce, add the cheese, bake",
+    "description": "A classic Italian dish"
+
+}
