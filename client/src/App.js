@@ -2,6 +2,9 @@ import './App.css';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
+import AddRecipe from './AddRecipe';
+
+
 
 
 
@@ -20,8 +23,10 @@ useEffect(() => {
 
 
   return (
+   <>
+
+   <AddRecipe/>
     <div className="App">
-      {/* display a list of recipes on the homepage showing the recipe title and description  */}
       
       <h1>Recipes</h1>
       <div className="recipes">
@@ -41,7 +46,10 @@ useEffect(() => {
           </div>
       ))}</div>
     </div>
+
+    </> 
   );
 }
 
 export default App;
+

@@ -1,31 +1,44 @@
 //fuinctional component
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 const ShowRecipe = (props) => {
-    const recipe = props.recipes.find(
-        (recipe) => recipe.id === parseInt(props.match.params.id)
-    );
+   
+  const [recipe, setrecipe] = useState("")
+  const [newrecipe, setnewrecipe] = useState("")
+useEffect(() => {
+  fetch("http://localhost:5000/showRecipes")
+  .then(res => res.json())
+  .then(data => setrecipe(data))
+}, [])
     
     return (
-        <div>
-        <h1>{recipe.name}</h1>
-        <h3>Ingredients</h3>
-        <ul>
-            {recipe.ingredients.map((ingredient) => (
-            <li key={ingredient.id}>{ingredient.name}</li>
-            ))}
-        </ul>
-        <h3>Instructions</h3>
-        <p>{recipe.instructions}</p>
-        <Link to={`/recipes/${recipe.id}/edit`}>
-            <Button variant='warning'>Edit Recipe</Button>
-        </Link>
-        <Link to='/recipes'>
-            <Button variant='secondary'>Back to Recipes</Button>
-        </Link>
-        </div>
+
+        <>
+      
+        <h1>Recipes</h1>
+        <div className="recipes">
+        {recipe && recipe.map((recipe) => (
+          <div className="recipe" key={recipe._id}>
+            <h2>{recipe.title}</h2>
+            <h3>{recipe.description}</h3>
+            <p>{recipe.ingredients}</p>
+              <p>{recipe.instructions}</p>
+        
+            <button onClick={() => {{
+              <p>{recipe.ingredients}</p>}
+              <p>{recipe.instructions}</p>
+            }
+            }>View</button>
+  
+            </div>
+        ))}</div>
+
+</>
     );
     };
+//export
+export default ShowRecipe;
