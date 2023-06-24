@@ -26,6 +26,43 @@ mongoose
 //require recipe
 const recipe=require('./models/recipe');
 
+
+//crud oprations for the recipe
+//get all recipes
+app.get('/showRecipes',(req,res)=>{
+    recipe.find().then(recipes=>{
+        res.json(recipes);
+    }).catch(err=>res.status(404).json({success:false}));
+}
+);
+
+//add recipe
+app.post('/addRecipe',(req,res)=>{
+    const newRecipe=new recipe({
+        title:req.body.title,
+        ingredients:req.body.ingredients,
+        instructions:req.body.instructions,
+        description:req.body.description,
+    });
+    newRecipe.save().then(recipe=>res.json(recipe));
+}
+);
+
+//update recipe
+app.put('/updateRecipe/:id',(req,res)=>{
+    recipe.findByIdAndUpdate(req.params.id,req.body).then(recipe=>{
+        res.json(recipe);
+    }).catch(err=>res.status(404).json({success:false}));
+}
+);
+//delete a recipe
+app.delete('/deleteRecipe/:id',(req,res)=>{
+    recipe.findByIdAndDelete(req.params.id).then(recipe=>res.json(recipe)).catch(err=>res.status(404).json({success:false}));
+}
+);
+
+
+
   app.listen(port,()=>{
 
     console.log(`Server is running on port ${port}`);
