@@ -54,6 +54,8 @@ const [newrecipe, setnewrecipe] = useState("")
         setnewrecipe(data);
       });
   };
+
+ 
   const deleteRecipe = (id) => {
     fetch(`http://localhost:5000/deleteRecipe/${id}`, {
       method: "DELETE",
@@ -163,19 +165,21 @@ useEffect(() => {
         <button onClick={updateRecipe}>Update</button>
         </div>
 
-        </div>
+        
         <div className="deleteRecipe">
         <h2>Delete Recipe</h2>
+      
         <input
+
+          
           type="text"
           placeholder="title"
           onChange={(e) => settitle(e.target.value)}
         />
 
-
-
         <button onClick={deleteRecipe}>Delete</button>
 
+        </div>
      </div>
 
 
