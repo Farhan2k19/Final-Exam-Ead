@@ -21,16 +21,23 @@ useEffect(() => {
 
   return (
     <div className="App">
-
-      <h1>Recipe</h1>
-      <div className="cars">
+      {/* display a list of recipes on the homepage showing the recipe title and description  */}
+      
+      <h1>Recipes</h1>
+      <div className="recipes">
       {recipe && recipe.map((recipe) => (
         <div className="recipe" key={recipe._id}>
           <h2>{recipe.title}</h2>
-          <h2>{recipe.instructions}</h2>
-
           <h3>{recipe.description}</h3>
-          <h3>{recipe.ingredients}</h3>
+          <p>{recipe.ingredients}</p>
+            <p>{recipe.instructions}</p>
+      
+          <button onClick={() => {{
+            <p>{recipe.ingredients}</p>}
+            <p>{recipe.instructions}</p>
+          }
+          }>View</button>
+
           </div>
       ))}</div>
     </div>
